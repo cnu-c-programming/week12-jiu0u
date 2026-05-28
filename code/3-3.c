@@ -16,7 +16,7 @@ int main(int argc, const char* argv[]) {
 	char* res_fp2 = fgets(buf_fp2, sizeof(buf_fp2), fp2);
 
 	printf("fp1 %s %p %d %d\n", buf_fp1, res_fp1, ferror(fp1), feof(fp1)); // 0 1 ==> 그냥 EOF
-	printf("fp2 %s %p %d %d\n", buf_fp2, res_fp2, ferror(fp1), feof(fp1)); // 1 0 ==> 읽을 수 없는 상태로 읽으려고 함 (error)
+	printf("fp2 %s %p %d %d\n", buf_fp2, res_fp2, ferror(fp2), feof(fp2)); // 1 0 ==> 읽을 수 없는 상태로 읽으려고 함 (error)
 		
 	fclose(fp1);
 	fclose(fp2);
