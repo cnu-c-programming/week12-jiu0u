@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -9,19 +11,38 @@ typedef struct config {
     unsigned long long Address;
 } Config;
 
-void config_parser(Config* config_ptr) {
+void config_parser(Config* config_ptr) 
+{
+    FILE* fp = fopen("config.txt", "r");
+    char key[30];
+    char value[60];
 
+    while (fscanf(fp, "%[^=]=%s\n", key, value) == 2)
+    {
+        if (strcmp(key, "InputFileName") == 0) {
+            strcpy(config_ptr->InputFileName, value);
+        }
+        else if (strcmp(key, "Options") == 0) {
+            config_ptr->Options = atoi(value); //ascii to integer
+        }
+        else if (strcmp(key, "SectionName") == 0) {
+            strcpy(config_ptr->SectionName, value);
+        }
+        else if (strcmp(key, "Address") == 0) {
+            //str to unsigned long long
+            config_ptr->Address = strtoull(value, NULL, 16);
+        }
+    }
 }
 
 int main(int argc, const char* argv[]) {
     Config config;
     config_parser(&config);
 
-    printf("config: %s %d %s %llu\n", 
-        config.InputFileName, 
+    printf("config: %s %d %s %llu\n",
+        config.InputFileName,
         config.Options,
         config.SectionName,
         config.Address);
     return 0;
 }
-
