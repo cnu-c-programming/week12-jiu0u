@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <stdio.h>
 
 
@@ -13,10 +15,7 @@ int main(int argc, const char* argv[])
 
     // a = 97, b = 98 .. (아스키코드)
     while ((ch = fgetc(fp)) != EOF) {
-        if (ch >= 'A' && ch <= 'Z') {
-            ch += ('a' - 'A'); //대문자를 소문자로 아스키값...
-        }
-
+        //소문자만 카운트하는구나.
         if (ch >= 'a' && ch <= 'z') {
             ch -= 'a'; //a --> 0
             alphabet[ch]++;
