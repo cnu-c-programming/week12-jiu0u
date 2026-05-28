@@ -23,13 +23,3 @@ int main(int argc, const char* argv[]) {
 
 	return 0;
 }
-
-
-
-
-    "fp1 %s %p %d %d\n"
-    "fp2 %s %p %d %d\n"
-    
-
-    return 0;
-}
